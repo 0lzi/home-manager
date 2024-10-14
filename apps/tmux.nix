@@ -5,6 +5,7 @@
     enable = true;
     mouse = true;
     baseIndex = 1;
+    terminal = "tmux-256color";
     sensibleOnTop = false;
     extraConfig = (builtins.readFile ../dotfiles/tmux.conf);
     plugins = with pkgs; [
