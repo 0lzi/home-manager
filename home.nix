@@ -32,6 +32,7 @@
     marp-cli
     unzip
     kubectl
+    kustomize
     kubernetes-helm
     k9s
     terraform
