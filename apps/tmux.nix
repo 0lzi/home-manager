@@ -4,6 +4,7 @@
   programs.tmux = {
     enable = true;
     mouse = true;
+    historyLimit = 20000;
     baseIndex = 1;
     terminal = "tmux-256color";
     sensibleOnTop = false;
