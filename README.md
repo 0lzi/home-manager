@@ -17,3 +17,18 @@
 experimental-features = nix-command flakes
 ```
 - home-manager switch --flake .#oliverkelly
+
+## Updating
+
+```
+Update home-manager version
+nix flake update
+home-manager switch --flake .#oliverkelly
+```
+
+## Garbage collection
+
+```
+nix-collect-garbage --delete-older-than 30d
+
+```
