@@ -38,8 +38,8 @@
     terraform
     keepassxc
     quasselClient
-    signal-desktop
     cargo
+    uv
     direnv
     nix-direnv
     # # Adds the 'hello' command to your environment. It prints a friendly
