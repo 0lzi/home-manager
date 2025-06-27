@@ -36,6 +36,7 @@
     kubernetes-helm
     k9s
     terraform
+    opentofu
     keepassxc
     quasselClient
     cargo
