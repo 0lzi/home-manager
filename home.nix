@@ -37,6 +37,7 @@
     k9s
     terraform
     opentofu
+    openbao
     keepassxc
     quasselClient
     cargo
