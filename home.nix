@@ -35,9 +35,12 @@
     kustomize
     kubernetes-helm
     k9s
+# Hashicorp type things
     terraform
     opentofu
     openbao
+    consul
+#######################
     keepassxc
     quasselClient
     cargo
