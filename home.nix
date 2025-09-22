@@ -40,6 +40,7 @@
     opentofu
     openbao
     consul
+    packer
 #######################
     keepassxc
     quasselClient
