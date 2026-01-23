@@ -21,7 +21,15 @@
       oliverkelly = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./home.nix
+          ./work.nix
+          ./packages.nix
+        ];
+      };
+      oli = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./oli.nix
+          ./packages.nix
         ];
       };
     };
