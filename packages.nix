@@ -22,6 +22,7 @@
     kustomize
     kubernetes-helm
     k9s
+    trufflehog
 # Hashicorp type things
     terraform
     opentofu
