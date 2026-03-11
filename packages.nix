@@ -11,7 +11,7 @@
   # environment.
   home.packages = with pkgs; [
     htop
-    neofetch
+    fastfetch
     vlc
     spotify
     virt-manager
