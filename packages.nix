@@ -23,6 +23,7 @@
     kubernetes-helm
     k9s
     trufflehog
+    yubikey-manager
 # Hashicorp type things
     terraform
     opentofu
