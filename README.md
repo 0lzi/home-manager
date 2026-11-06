@@ -11,11 +11,9 @@
 - rm -rf .config/home-manager/
 - git clone https://github.com/0lzi/home-manager.git
 - cd home-manager/
-- sudo vi /etc/nix/nix.conf 
-- add
-```
-experimental-features = nix-command flakes
-```
+- sudo vi ``/etc/nix/nix.conf``
+- add contents of `etc/nix/nix.conf`
+- mkdir -p /var/tmp
 - home-manager switch --flake .#oliverkelly
 
 ## Updating
