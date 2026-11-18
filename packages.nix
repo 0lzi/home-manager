@@ -10,10 +10,13 @@
   ];
 
   # Only allow the specific unfree packages we actually use, rather than
-  # every unfree package in nixpkgs.
+  # every unfree package in nixpkgs. (The BSL-licensed HashiCorp tools
+  # terraform/consul/packer and spotify are the only unfree packages in
+  # home.packages; the rest are free. `nix build` fails loudly if a new
+  # unfree package is added without updating this list.)
   nixpkgs.config.allowUnfreePredicate = pkg:
     lib.elem (lib.getName pkg)
-      [ "spotify" "vlc" "marp-cli" "pgadmin4-desktopmode" ];
+      [ "terraform" "consul" "packer" "spotify" ];
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -60,6 +63,12 @@
     # AI stuff
     pi-coding-agent
     socat
+    # rtk (https://github.com/steffengy/rtk) rewrites bash commands for token
+    # savings; the pi extension at ~/.pi/agent/extensions/rtk.ts shells out to
+    # it. It is a nixpkgs package in the locked nixpkgs-unstable (1.1.0).
+    # An older manual ~/.config/bin/rtk symlink (rust-bin build) is obsolete
+    # now that HM manages rtk via the profile; it may be removed.
+    rtk
   ];
 
   # Let Home Manager install and manage itself (per-user, but harmless

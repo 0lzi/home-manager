@@ -23,6 +23,17 @@
     system = inputs.system or builtins.currentSystem;
     pkgs = nixpkgs.legacyPackages.${system};
   in {
+    # Bootstrap shells for first-time setup, before `home-manager` and `just`
+    # are installed. Use e.g.:
+    #   nix shell .#devShells.oliverkelly.default -c home-manager switch --flake .#oliverkelly
+    devShells.${system} = rec {
+      default = shell;
+      oliverkelly = shell;
+      oli = shell;
+      shell = pkgs.mkShell {
+        packages = [ home-manager.packages.${pkgs.system}.home-manager pkgs.just ];
+      };
+    };
     homeConfigurations = {
       oliverkelly = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
