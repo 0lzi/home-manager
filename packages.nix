@@ -41,6 +41,10 @@
     bat
     lazydocker
     pgadmin4-desktopmode
+#######################
+# Ai Stuffs
+    pi-coding-agent
+
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
