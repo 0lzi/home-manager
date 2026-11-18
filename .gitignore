@@ -1,0 +1,5 @@
+# Stray files that snuck in (a device node ended up at the repo root)
+.env
+result*
+result-*
+.direnv/

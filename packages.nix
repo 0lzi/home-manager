@@ -1,69 +1,68 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
+  # Shared per-app modules live in ./apps and are imported here so the
+  # per-user files (work.nix / oli.nix) only need to set the username,
+  # home directory and stateVersion.
   imports = [
-   ./apps/tmux.nix
-   ./apps/neovim.nix
+    ./apps/tmux.nix
+    ./apps/neovim.nix
   ];
 
-  nixpkgs.config.allowUnfreePredicate = _: true;
+  # Only allow the specific unfree packages we actually use, rather than
+  # every unfree package in nixpkgs.
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    lib.elem (lib.getName pkg)
+      [ "spotify" "vlc" "marp-cli" "pgadmin4-desktopmode" ];
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    # General
     htop
     fastfetch
     vlc
     spotify
     virt-manager
     lazygit
-    marp-cli
+    bat
+    lazydocker
     unzip
+    ripgrep
+    keepassxc
+    quasselClient
+    nerd-fonts.hack
+
+    # Kubernetes
     kubectl
     kustomize
     kubernetes-helm
     k9s
+
+    # Secrets / scanning
     trufflehog
     yubikey-manager
-# Hashicorp type things
+
+    # Hashicorp type things
     terraform
     opentofu
     openbao
     consul
     packer
-#######################
-    keepassxc
-    quasselClient
+
+    # Language toolchains
     cargo
     uv
+    go
     direnv
     nix-direnv
-    go
-    bat
-    lazydocker
-    pgadmin4-desktopmode
-#######################
-# Ai Stuffs
+
+    # AI stuff
     pi-coding-agent
     socat
-    rtk
-   #ripgrep
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    nerd-fonts.hack
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
   ];
 
-  # Let Home Manager install and manage itself.
+  # Let Home Manager install and manage itself (per-user, but harmless
+  # here since both users share this file).
   programs.home-manager.enable = true;
 }
